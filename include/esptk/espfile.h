@@ -3,6 +3,7 @@
 
 #include "record.h"
 #include "tes3record.h"
+#include <filesystem>
 #include <fstream>
 #include <set>
 #include <string>
@@ -15,8 +16,7 @@ class SubRecord;
 class File
 {
 public:
-  File(const std::string& fileName);
-  File(const std::wstring& fileName);
+  File(const std::filesystem::path& fileName);
 
   Record readRecord();
 
