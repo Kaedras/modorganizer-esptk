@@ -2,6 +2,7 @@
 #define ESPTYPES_H
 
 #include <istream>
+#include <cstring>
 
 template <typename T>
 static T readType(std::istream& stream)

@@ -3,6 +3,7 @@
 #include "subrecord.h"
 #include "tes3subrecord.h"
 #include <bitset>
+#include <cstring>
 #include <sstream>
 
 ESP::File::File(const std::string& fileName)
