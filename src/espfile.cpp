@@ -6,13 +6,7 @@
 #include <cstring>
 #include <sstream>
 
-ESP::File::File(const std::string& fileName)
-{
-  m_File.open(fileName, std::fstream::in | std::fstream::binary);
-  init();
-}
-
-ESP::File::File(const std::wstring& fileName)
+ESP::File::File(const std::filesystem::path& fileName)
 {
   m_File.open(fileName, std::fstream::in | std::fstream::binary);
   init();
