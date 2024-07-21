@@ -1,8 +1,8 @@
 #ifndef ESPTYPES_H
 #define ESPTYPES_H
 
-#include <istream>
 #include <cstring>
+#include <istream>
 
 template <typename T>
 static T readType(std::istream& stream)
