@@ -17,9 +17,11 @@ jobs:
           - os: windows-2022
             preset: vs2022-windows
             build_dir: vsbuild
+            name: windows
           - os: ubuntu-24.04
             preset: linux
             build_dir: build
+            name: linux
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -37,5 +39,5 @@ jobs:
       - name: Upload ESPTK artifact
         uses: actions/upload-artifact@master
         with:
-          name: esptk
+          name: esptk-${{ matrix.name }}
           path: ./install
