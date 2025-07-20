@@ -8,20 +8,31 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2022
+    strategy:
+      max-parallel: 2
+      fail-fast: false
+      matrix:
+        os: [ windows-2022, ubuntu-24.04 ]
+        include:
+          - os: windows-2022
+            preset: vs2022-windows
+            build_dir: vsbuild
+          - os: ubuntu-24.04
+            preset: linux
+            build_dir: build
+
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Configure ESPTK build
-        shell: pwsh
-        run: |
-          cmake --preset vs2022-windows "-DCMAKE_INSTALL_PREFIX=install"
+        run: cmake --preset ${{ matrix.preset }} "-DCMAKE_INSTALL_PREFIX=install"
 
       - name: Build ESPTK
-        run: cmake --build vsbuild --config RelWithDebInfo
+        run: cmake --build ${{ matrix.build_dir }} --config RelWithDebInfo
 
       - name: Install ESPTK
-        run: cmake --install vsbuild --config RelWithDebInfo
+        run: cmake --install ${{ matrix.build_dir }} --config RelWithDebInfo
 
       - name: Upload ESPTK artifact
         uses: actions/upload-artifact@master
