@@ -42,6 +42,19 @@ if (MSVC)
 	)
 
 	set_target_properties(esptk PROPERTIES VS_STARTUP_PROJECT esptk)
+else()
+	target_compile_options(esptk
+		PRIVATE
+		"-Wall"
+		"-Wextra"
+		"-Wno-unknown-pragmas"
+		"-fvisibility-ms-compat"
+		"-Wl,--no-undefined"
+	)
+	target_link_options(esptk
+		PRIVATE
+		$<$<CONFIG:RelWithDebInfo>:-flto=auto>
+	)
 endif()
 
 add_library(mo2::esptk ALIAS esptk)
