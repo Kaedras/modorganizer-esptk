@@ -23,7 +23,7 @@ private:
   {
     char type[4];
     float version;
-    long unknown;
+    uint32_t unknown;
   } m_Header;
 };
 
