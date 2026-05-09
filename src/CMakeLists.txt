@@ -64,5 +64,5 @@ install(TARGETS esptk EXPORT esptkTargets FILE_SET HEADERS)
 install(EXPORT esptkTargets
 	FILE mo2-esptk-targets.cmake
 	NAMESPACE mo2::
-	DESTINATION lib/cmake/mo2-esptk
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/mo2-esptk
 )
