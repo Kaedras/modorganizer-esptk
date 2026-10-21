@@ -12,13 +12,13 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        os: [ windows-2022, ubuntu-24.04 ]
+        os: [ windows-2022, ubuntu-26.04 ]
         include:
           - os: windows-2022
             preset: vs2022-windows
             build_dir: vsbuild
             name: windows
-          - os: ubuntu-24.04
+          - os: ubuntu-26.04
             preset: linux
             build_dir: build
             name: linux
